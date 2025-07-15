@@ -19,8 +19,10 @@ public class Main {
             
             System.out.print("Enter a number(COLUMN) from [0/5]: " );
             input_column = Getinput.nextInt();
-            
+
             Board_ship.CheckTurn(input_row, input_column);
+            Board_ship.PrintBoard();
+
             if (Board_ship.CheckBoard() == true){
                 System.out.println("YOU WON!");
                 GameOver = true;
