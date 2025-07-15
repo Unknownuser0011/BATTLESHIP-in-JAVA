@@ -1,22 +1,28 @@
+
 class Board {
-    private char[][] board;
+    
+    int[] Place_Board = {0, 1, 1, 1, 0, 0};
 
-    public Board() {
-        board = new char[5][5];
-        // Initialize board with water '~'
-        for (int i = 0; i < 5; i++)
-            for (int j = 0; j < 5; j++)
-                board[i][j] = '~';
-    }
-
-    public void showBoard() {
-        System.out.println("_______________________");
-        for (int x = 0; x < 5; x++) {
-            for (int y = 0; y < 5; y++) {
-                System.out.print("|" + board[x][y] + "|");
-            }
-            System.out.println();
+    //checking if player place input hit or miss a ship
+    void CheckTurn(int input){
+        if (Place_Board[input] != 0){
+            System.out.println("HIT");
+            Place_Board[input] = 0;
+        } else {
+            System.out.println("MISS");
         }
-        System.out.println("_______________________");
     }
-}
+
+    boolean CheckBoard(){
+        //checking if there is a ship on the board
+        for (int i = 0; i <= 6; i++){
+            if (Place_Board[i] == 1){
+                return true;     
+            } else {
+                return false;
+            }
+        }
+    }
+
+}//classBoard
+    
