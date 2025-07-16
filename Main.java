@@ -5,7 +5,8 @@ public class Main {
 
     public static void main(String[] args){
 
-        Board Board_ship = new Board();
+        Board Board_ship1 = new Board();
+        Board Board_ship2 = new Board();
         Player Player1 = new Player();
         Player Player2 = new Player();
 
@@ -24,34 +25,38 @@ public class Main {
                     input_row = Player1.Player_Turn_Row(Getinput);
                     input_column = Player1.Player_Turn_Column(Getinput);
                     
-                    if (Board_ship.CheckTurn_Player1(input_row, input_column) == true){
-                        Board_ship.PrintBoard();
+                    if (Board_ship1.CheckTurn_Player(input_row, input_column) == true){
+                        Board_ship1.PrintBoard();
                         Player1_turn_over = false;
                     } else {
-                        Board_ship.PrintBoard();
+                        Board_ship1.PrintBoard();
                         Player1_turn_over = true;
                     }
                 }
                 //Player 2 turn 
                 while(!Player2_turn_over){
-                    System.out.println("++=PLAYER 1 TURN=++");
+                    System.out.println("++=PLAYER 2 TURN=++");
                     input_row = Player2.Player_Turn_Row(Getinput);
                     input_column = Player2.Player_Turn_Column(Getinput);
                     
-                    if (Board_ship.CheckTurn_Player2(input_row, input_column) == true){
-                        Board_ship.PrintBoard();
+                    if (Board_ship2.CheckTurn_Player(input_row, input_column) == true){
+                        Board_ship2.PrintBoard();
                         Player2_turn_over = false;
                     } else {
-                        Board_ship.PrintBoard();
+                        Board_ship2.PrintBoard();
                         Player2_turn_over = true;
                     }
                 }
                 
                 
-                if (Board_ship.CheckBoard() == true){
-                    System.out.println("YOU WON!");
+                if (Board_ship1.CheckBoard() == true){
+                    System.out.println("PLAYER 2 WON");
                     GameOver = true;
                 }  
+                if (Board_ship2.CheckBoard() == true){
+                    System.out.println("PLAYER 1 WON");
+                    GameOver = true;
+                }
 
             }//whileloop
 

@@ -23,13 +23,12 @@ int[][] Place_Board = {
 // So Place_Board[row][column]
 
     //checking if player place input hit or miss a ship
-    boolean CheckTurn_Player1(int input_row, int input_column){
+    boolean CheckTurn_Player(int input_row, int input_column){
         boolean CheckifHit = false;
 
         if (Place_Board[input_row][input_column] != 0){
             System.out.println("HIT");
-            //4 is when player 1 hiited a ship from player 2
-            Place_Board[input_row][input_column] = 4;
+            Place_Board[input_row][input_column] = 2;
             CheckifHit = true;
         } else{
             System.out.println("MISS");
@@ -38,21 +37,6 @@ int[][] Place_Board = {
         return CheckifHit;
     }
 
-    boolean CheckTurn_Player2(int input_row, int input_column){
-        boolean CheckifHit = false;
-
-        if (Place_Board[input_row][input_column] != 0){
-            System.out.println("HIT");
-            //3 is when player 1 hiited a ship from player 2
-            Place_Board[input_row][input_column] = 3;
-            CheckifHit = true;
-        } else{
-            System.out.println("MISS");
-            CheckifHit = false;
-        }        
-        return CheckifHit;
-    }
-    
     boolean CheckBoard(){
         //checking if there is a ship on the board
         int ShipRemaining = 0;
@@ -80,17 +64,11 @@ int[][] Place_Board = {
 
             // Print the vertical lines
             for (int column = 0; column < Place_Board[row].length; column++) {
-        
-                switch (Place_Board[row][column]) {
-                    case 3:
-                        System.out.print("| X ");
-                        break;
-                    case 4:
-                        System.out.print("| Y ");
-                        break;
-                    default:
-                        System.out.print("|   ");
-                        break;
+
+                if (Place_Board[row][column] == 2){
+                    System.out.print("| X ");
+                } else {
+                    System.out.print("|   ");
                 }
             }
             System.out.println("|");
