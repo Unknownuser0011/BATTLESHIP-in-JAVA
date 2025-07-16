@@ -16,15 +16,21 @@ int[][] Place_Board = {
 // Therefore Place_Board[row][column]
 
     //checking if player place input hit or miss a ship
-    void CheckTurn(int input_row, int input_column){
+    boolean CheckTurn(int input_row, int input_column){
+        boolean CheckifHit = false;
+
         if (Place_Board[input_row][input_column] != 0){
             System.out.println("HIT");
-            //2 is when the player hit a ship
             Place_Board[input_row][input_column] = 2;
-        } else {
+            CheckifHit = true;
+            //2 is when the player hit a ship
+        } else{
             System.out.println("MISS");
-        }
+            CheckifHit = false;
+        }        
+        return CheckifHit;
     }
+    
 
     boolean CheckBoard(){
         //checking if there is a ship on the board
@@ -36,10 +42,8 @@ int[][] Place_Board = {
                 } 
             }
         }
-        if (ShipRemaining == 0){
-            return true;
-        }
-        return false;
+        //returns true if all ships remaining are true 
+        return ShipRemaining == 0;
     }
 
     //Priting the board and the location of the sunk ships

@@ -6,31 +6,43 @@ public class Main {
     public static void main(String[] args){
 
         Board Board_ship = new Board();
-        Scanner Getinput = new Scanner(System.in);
+        Player Player1 = new Player();
+        Player player2 = new Player();
 
-        boolean GameOver = false;
-        int input_row = 0;
-        int input_column = 0;
-
-
-        while(!GameOver){
-            System.out.print("Enter a number(ROW) from [0/2]: " );
-            input_row = Getinput.nextInt();
+        try (Scanner Getinput = new Scanner(System.in)) {
+            boolean GameOver = false;
             
-            System.out.print("Enter a number(COLUMN) from [0/5]: " );
-            input_column = Getinput.nextInt();
+            while(!GameOver){
+                int input_row = 0;
+                int input_column = 0;
+                
+                boolean Player_turn_over = false;
+                while(!Player_turn_over){
+                    
+                    input_row = Player1.Player_Turn_Row(Getinput);
+                    input_column = Player1.Player_Turn_Column(Getinput);
+                    
+                    if (Board_ship.CheckTurn(input_row, input_column) == true){
+                        Board_ship.PrintBoard();
+                        Player_turn_over = false;
+                    } else {
+                        Board_ship.PrintBoard();
+                        Player_turn_over = true;
+                    }
+                }
+                
+                
+                if (Board_ship.CheckBoard() == true){
+                    System.out.println("YOU WON!");
+                    GameOver = true;
+                }  
 
-            Board_ship.CheckTurn(input_row, input_column);
-            Board_ship.PrintBoard();
+            }//whileloop
 
-            if (Board_ship.CheckBoard() == true){
-                System.out.println("YOU WON!");
-                GameOver = true;
-            }
-        }
+        }//try catch
 
-        Getinput.close();
-    }
-}
+    }//public class
+
+}//main class
 
 
