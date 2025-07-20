@@ -10,12 +10,46 @@ public class Main {
         Player Player1 = new Player();
         Player Player2 = new Player();
 
+                
         try (Scanner Getinput = new Scanner(System.in)) {
-            boolean GameOver = false;
+            int input_row = 0;
+            int input_column = 0;
             
+
+            int shipCount = 0;
+            int maxShips = 5;
+        
+        while (shipCount < maxShips) {
+            System.out.println("Place your ship Player 1");
+            input_row = Player1.Player_Turn_Row(Getinput);
+            input_column = Player1.Player_Turn_Column(Getinput);
+    
+            if (Board_ship1.Place_Ships(input_row, input_column)) {
+            shipCount++;
+            System.out.println("Ships placed: " + shipCount + "/" + maxShips);
+            }
+        }
+        
+             shipCount = 0;
+             maxShips = 5;
+        
+        while (shipCount < maxShips) {
+            System.out.println("Place your ship Player 1");
+            input_row = Player2.Player_Turn_Row(Getinput);
+            input_column = Player2.Player_Turn_Column(Getinput);
+    
+            if (Board_ship2.Place_Ships(input_row, input_column)) {
+            shipCount++;
+            System.out.println("Ships placed: " + shipCount + "/" + maxShips);
+            }
+        }
+
+            
+            boolean GameOver = false;
+            //Game Start
             while(!GameOver){
-                int input_row = 0;
-                int input_column = 0;
+                input_row = 0;
+                input_column = 0;
                 
                 boolean Player1_turn_over = false;
                 boolean Player2_turn_over = false;
