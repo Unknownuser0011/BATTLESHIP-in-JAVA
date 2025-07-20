@@ -9,8 +9,7 @@ public class Main {
         Board Board_ship2 = new Board();
         Player Player1 = new Player();
         Player Player2 = new Player();
-
-                
+           
         try (Scanner Getinput = new Scanner(System.in)) {
             int input_row = 0;
             int input_column = 0;
@@ -18,7 +17,8 @@ public class Main {
 
             int shipCount = 0;
             int maxShips = 5;
-        
+            
+        //player 1 turn 
         while (shipCount < maxShips) {
             System.out.println("Place your ship Player 1");
             input_row = Player1.Player_Turn_Row(Getinput);
@@ -26,27 +26,29 @@ public class Main {
     
             if (Board_ship1.Place_Ships(input_row, input_column)) {
             shipCount++;
+            Board_ship1.PrintBoard(1);
             System.out.println("Ships placed: " + shipCount + "/" + maxShips);
             }
         }
-        
+            //Reset
              shipCount = 0;
              maxShips = 5;
-        
+        //player 2 turn 
         while (shipCount < maxShips) {
-            System.out.println("Place your ship Player 1");
+            System.out.println("Place your ship Player 2");
             input_row = Player2.Player_Turn_Row(Getinput);
             input_column = Player2.Player_Turn_Column(Getinput);
     
             if (Board_ship2.Place_Ships(input_row, input_column)) {
             shipCount++;
+            Board_ship2.PrintBoard(1);
             System.out.println("Ships placed: " + shipCount + "/" + maxShips);
             }
         }
 
-            
             boolean GameOver = false;
             //Game Start
+            System.err.println("\nGAME START\n");
             while(!GameOver){
                 input_row = 0;
                 input_column = 0;
@@ -60,10 +62,10 @@ public class Main {
                     input_column = Player1.Player_Turn_Column(Getinput);
                     
                     if (Board_ship1.CheckTurn_Player(input_row, input_column) == true){
-                        Board_ship1.PrintBoard();
+                        Board_ship1.PrintBoard(0);
                         Player1_turn_over = false;
                     } else {
-                        Board_ship1.PrintBoard();
+                        Board_ship1.PrintBoard(0);
                         Player1_turn_over = true;
                     }
                 }
@@ -74,15 +76,15 @@ public class Main {
                     input_column = Player2.Player_Turn_Column(Getinput);
                     
                     if (Board_ship2.CheckTurn_Player(input_row, input_column) == true){
-                        Board_ship2.PrintBoard();
+                        Board_ship2.PrintBoard(0);
                         Player2_turn_over = false;
                     } else {
-                        Board_ship2.PrintBoard();
+                        Board_ship2.PrintBoard(0);
                         Player2_turn_over = true;
                     }
                 }
                 
-                
+                // checking 
                 if (Board_ship1.CheckBoard() == true){
                     System.out.println("PLAYER 2 WON");
                     GameOver = true;
@@ -96,8 +98,8 @@ public class Main {
 
         }//try catch
 
-    }//public class
+    }//main class
 
-}//main class
+}//class
 
 
