@@ -61,8 +61,8 @@ public class Main {
                     input_row = Player1.Player_Turn_Row(Getinput);
                     input_column = Player1.Player_Turn_Column(Getinput);
                     
-                    if (Board_ship1.CheckTurn_Player(input_row, input_column) == true){
-                        Board_ship1.PrintBoard(0);
+                    if (Board_ship2.CheckTurn_Player(input_row, input_column) == true){
+                        Board_ship2.PrintBoard(0);
                         Player1_turn_over = false;
                     } else {
                         Board_ship1.PrintBoard(0);
@@ -75,8 +75,8 @@ public class Main {
                     input_row = Player2.Player_Turn_Row(Getinput);
                     input_column = Player2.Player_Turn_Column(Getinput);
                     
-                    if (Board_ship2.CheckTurn_Player(input_row, input_column) == true){
-                        Board_ship2.PrintBoard(0);
+                    if (Board_ship1.CheckTurn_Player(input_row, input_column) == true){
+                        Board_ship1.PrintBoard(0);
                         Player2_turn_over = false;
                     } else {
                         Board_ship2.PrintBoard(0);
@@ -85,14 +85,14 @@ public class Main {
                 }
                 
                 // checking 
-                if (Board_ship1.CheckBoard() == true){
-                    System.out.println("PLAYER 2 WON");
-                    GameOver = true;
-                }  
-                if (Board_ship2.CheckBoard() == true){
-                    System.out.println("PLAYER 1 WON");
-                    GameOver = true;
+                if (Board_ship1.CheckBoard() == true) {
+                System.out.println("PLAYER 2 WON");
+                GameOver = true;
+                } else if (Board_ship2.CheckBoard() == true) {
+                System.out.println("PLAYER 1 WON");
+                GameOver = true;
                 }
+
 
             }//whileloop
 
