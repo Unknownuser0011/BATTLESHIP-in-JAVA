@@ -9,7 +9,18 @@ public class Main {
         Board Board_ship2 = new Board();
         Player Player1 = new Player();
         Player Player2 = new Player();
-           
+        AI AI_Player = new AI();
+        
+        
+        System.out.println("========================================");
+        System.out.println("WELCOME TO BATTLESHIP!");
+        System.out.println("select mode\n 1. Player vs Player \n 2. Player vs AI \n 3. Exit");
+
+
+
+
+
+
         try (Scanner Getinput = new Scanner(System.in)) {
             int input_row = 0;
             int input_column = 0;
