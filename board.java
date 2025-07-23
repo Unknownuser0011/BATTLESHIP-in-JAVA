@@ -3,7 +3,7 @@
 
 class Board {
     
-int[][] Place_Board = {
+public int[][] Place_Board = {
     {0, 0, 0, 0, 0, 0, 0}, // row 0 coloumn 6
     {0, 0, 0, 0, 0, 0, 0}, // row 1 coloumn 6
     {0, 0, 0, 0, 0, 0, 0}, // row 2 coloumn 6
