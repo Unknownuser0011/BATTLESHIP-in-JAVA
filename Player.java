@@ -6,7 +6,8 @@ class Player {
     Board Board_ship = new Board();
 
     String Name;
-
+    //oponent name 
+    String OP_Name;
     public int Player_Turn_Row(Scanner Getinput) {
         System.out.print("Enter a number(ROW) from [0/6]: ");
         return Getinput.nextInt();
@@ -36,7 +37,7 @@ class Player {
      
      boolean Player_turn_over = false;
      while(!Player_turn_over){
-                    System.out.println("++=PLAYER " + Name + " TURN=++");
+                    System.out.println("++=PLAYER " + OP_Name + " TURN=++");
                     int input_row = Player_Turn_Row(Getinput);
                     int input_column = Player_Turn_Column(Getinput);
                     
@@ -52,7 +53,6 @@ class Player {
 
     boolean Checking_the_board(){
         if (Board_ship.CheckBoard() == true){
-            System.out.println("PLAYER " + Name + "Has lost");
             return true;
         }
         return false;

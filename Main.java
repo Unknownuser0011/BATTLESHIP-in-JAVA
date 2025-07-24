@@ -26,14 +26,19 @@ public class Main {
             Player1.Name = "and";
             Player2.Name = "rew";
 
+            Player1.OP_Name = Player2.Name;
+            Player2.OP_Name = Player1.Name;
             //placing ships 
             Player1.PLACING_PLAYER_SHIPS(shipCount, maxShips, Getinput);
             Player2.PLACING_PLAYER_SHIPS(shipCount, maxShips, Getinput);
        
             Boolean GameOver = false;
             while(!GameOver){
-                Player1.PLAYER_TURN(Getinput);
+                //Player 1 turn
                 Player2.PLAYER_TURN(Getinput);
+                //Player 2 turn 
+                Player1.PLAYER_TURN(Getinput);
+                
                 if (Player1.Checking_the_board() == true){
                     System.out.println("Player 1 lost ");
                 } else if (Player2.Checking_the_board() == true){
