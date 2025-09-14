@@ -1,29 +1,27 @@
 
-import java.util.Scanner; 
-
+import java.util.Random;
+import java.util.Scanner;
 
 class Player {
     Board Board_ship = new Board();
+    Random RNG = new Random();
 
-    String Name;
-    //oponent name 
-    String OP_Name;
-    public int Player_Turn_Row(Scanner Getinput) {
-        System.out.print("Enter a number(ROW) from [0/6]: ");
-        return Getinput.nextInt();
-    }
 
-    public int Player_Turn_Column(Scanner Getinput) {
-        System.out.print("Enter a number(COLUMN) from [0/6]: ");
-        return Getinput.nextInt();
-    }
-
-    void PLACING_PLAYER_SHIPS(int shipCount, int maxShips, Scanner Getinput) {
+    void PLACING_PLAYER_SHIPS(int shipCount, int maxShips, Scanner Getinput, Boolean AI_mode) {
+        
         while (shipCount < maxShips) {
-            System.out.println("Place your ship Player " + Name);
-            int input_row = Player_Turn_Row(Getinput);
-            int input_column = Player_Turn_Column(Getinput);
 
+            int input_row = 0;
+            int input_column = 0;
+
+            if (AI_mode == false){
+                input_row = Getinput.nextInt();
+                input_column = Getinput.nextInt();
+            } else {
+                input_row = RNG.nextInt(7);
+                input_column = RNG.nextInt(7);
+            }
+            
             if (Board_ship.Place_Ships(input_row, input_column)) {
                 shipCount++;
                 Board_ship.PrintBoard(1);
@@ -32,15 +30,23 @@ class Player {
         }
     }
 
-
-    void PLAYER_TURN(Scanner Getinput){
+    void PLAYER_TURN(Scanner Getinput, Boolean AI_mode){
      
-     boolean Player_turn_over = false;
-     while(!Player_turn_over){
-                    System.out.println("++=PLAYER " + OP_Name + " TURN=++");
-                    int input_row = Player_Turn_Row(Getinput);
-                    int input_column = Player_Turn_Column(Getinput);
-                    
+    boolean Player_turn_over = false;
+     
+    while(!Player_turn_over){
+        
+        int input_row = 0;
+        int input_column = 0;
+
+                    if (AI_mode == false){
+                        input_row = Getinput.nextInt();
+                        input_column = Getinput.nextInt();
+                    } else {
+                        input_row = RNG.nextInt(7);
+                        input_column = RNG.nextInt(7);
+                    }
+
                     if (Board_ship.CheckTurn_Player(input_row, input_column) == true){
                         Board_ship.PrintBoard(0);
                         Player_turn_over = false;
@@ -57,8 +63,5 @@ class Player {
         }
         return false;
     } 
-
-    
-
 
 }

@@ -1,6 +1,4 @@
 
-
-
 class Board {
     
 public int[][] Place_Board = {
@@ -17,11 +15,8 @@ public int[][] Place_Board = {
 //row is Horizontal
 // So Place_Board[row][column]
 
-
-
     boolean Place_Ships(int input_row, int input_column) {
-        System.out.println("PLACE YOUR SHIP!");
-
+        
     if (input_row < 0 || input_row >= Place_Board.length || 
         input_column < 0 || input_column >= Place_Board[0].length) {
         System.out.println("Invalid coordinates. Try again.");
@@ -113,11 +108,8 @@ public int[][] Place_Board = {
         for (int j = 0; j < Place_Board[0].length; j++) {
             System.out.print("+---");
         }
-        System.out.println("+");
-
-        System.out.println();
+        System.out.println("+\n");
     }
-
 
 }//classBoard
     
